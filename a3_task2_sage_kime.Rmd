@@ -56,10 +56,10 @@ Make sure to `View()` the resulting data frame (remember: run `View()` in the Co
 **Note: You should get a warning about one piece dropped. What happens to the name in Row 49, which contains two dashes?
 
 ```{r}
-sw_split_name <- starwars %>% 
+sw_split_name <- starwars %>% # create new subset from starwars data
   separate(col = name,
-           into = c("name_1","name_2"),
-           sep = "-"
+           into = c("name_1","name_2"), # split name into 2 columns
+           sep = "-" #separated at dash
   )
 ```
 
@@ -92,12 +92,12 @@ In the code chunk below, write code to create a new data frame called `sw_skin_s
 Make sure to `View()` the resulting data frame (remember: run `View()` in the Console, or click on the object name in the Environment) to ensure it worked as expected.
 
 ```{r}
-sw_skin_sep <- starwars %>% 
+sw_skin_sep <- starwars %>% # start from starwars data
   separate(col = skin_color,
-           into = c("skin_1","skin_2"),
-           sep = ",",
-           extra = "merge",
-           remove = FALSE)
+           into = c("skin_1","skin_2"), # split skin color into 2 columns
+           sep = ",", # separated at comma
+           extra = "merge", # merge into second column if additional commas
+           remove = FALSE) # don't remove original column
 ```
 
 ### 2. `tidyr::unite()`
@@ -244,6 +244,8 @@ gasol_hookshots <- lakers %>%
   mutate(date_updated = ymd(date)) %>% 
   mutate(month = month(date_updated)) %>% 
   count(month)
+
+gasol_hookshots
 
 ```
 

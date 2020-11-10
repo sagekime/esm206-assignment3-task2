@@ -404,10 +404,10 @@ sw_sep_hair &lt;- starwars %&gt;% # Start with starwars
 <p>In the code chunk below, write code to create a new data frame called <code>sw_split_name</code>, starting from <code>starwars</code>, that splits the <code>name</code> column into two pieces, <code>name_1</code> and <code>name_2</code>, with a separation at the first <em>dash</em> “-”.</p>
 <p>Make sure to <code>View()</code> the resulting data frame (remember: run <code>View()</code> in the Console, or click on the object name in the Environment) to ensure it worked as expected.</p>
 <p>**Note: You should get a warning about one piece dropped. What happens to the name in Row 49, which contains two dashes?</p>
-<pre class="r"><code>sw_split_name &lt;- starwars %&gt;% 
+<pre class="r"><code>sw_split_name &lt;- starwars %&gt;% # create new subset from starwars data
   separate(col = name,
-           into = c(&quot;name_1&quot;,&quot;name_2&quot;),
-           sep = &quot;-&quot;
+           into = c(&quot;name_1&quot;,&quot;name_2&quot;), # split name into 2 columns
+           sep = &quot;-&quot; #separated at dash
   )</code></pre>
 </div>
 <div id="b.-follow-me" class="section level4">
@@ -433,12 +433,12 @@ sw_sep_names &lt;- starwars %&gt;% # Start from starwars data
 <h4>1B. On your own</h4>
 <p>In the code chunk below, write code to create a new data frame called <code>sw_skin_sep</code> that starts from <code>starwars</code>, separates the <code>skin_color</code> column into two columns <code>skin_1</code> and <code>skin_2</code> at the first <em>comma</em>, merging everything after the first comma into the second column and keeping the original <code>skin_color</code> column.</p>
 <p>Make sure to <code>View()</code> the resulting data frame (remember: run <code>View()</code> in the Console, or click on the object name in the Environment) to ensure it worked as expected.</p>
-<pre class="r"><code>sw_skin_sep &lt;- starwars %&gt;% 
+<pre class="r"><code>sw_skin_sep &lt;- starwars %&gt;% # start from starwars data
   separate(col = skin_color,
-           into = c(&quot;skin_1&quot;,&quot;skin_2&quot;),
-           sep = &quot;,&quot;,
-           extra = &quot;merge&quot;,
-           remove = FALSE)</code></pre>
+           into = c(&quot;skin_1&quot;,&quot;skin_2&quot;), # split skin color into 2 columns
+           sep = &quot;,&quot;, # separated at comma
+           extra = &quot;merge&quot;, # merge into second column if additional commas
+           remove = FALSE) # don&#39;t remove original column</code></pre>
 </div>
 </div>
 <div id="tidyrunite" class="section level3">
@@ -576,7 +576,17 @@ points_by_month </code></pre>
   filter(player == &quot;Pau Gasol&quot;, type == &quot;hook&quot;) %&gt;% 
   mutate(date_updated = ymd(date)) %&gt;% 
   mutate(month = month(date_updated)) %&gt;% 
-  count(month)</code></pre>
+  count(month)
+
+gasol_hookshots</code></pre>
+<pre><code>##   month  n
+## 1     1 19
+## 2     2 16
+## 3     3 20
+## 4     4 14
+## 5    10  2
+## 6    11 14
+## 7    12 10</code></pre>
 </div>
 </div>
 <div id="dplyrcase_when" class="section level3">
